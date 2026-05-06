@@ -1,0 +1,15 @@
+name = "self-publishing-blog"
+compatibility_date = "2024-11-18"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".next"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "blog_db"
+database_id = "b5e968b2-9ee6-423b-a72f-204f07ae1275"
+
+[vars]
+# Add Slack/Discord Webhooks here
+# SLACK_WEBHOOK_URL = ""
+# DISCORD_WEBHOOK_URL = ""
+
