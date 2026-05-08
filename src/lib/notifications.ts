@@ -1,16 +1,5 @@
-export async function sendNotification(topic: string, keywords: string[], trendId: string) {
-  const slackUrl = process.env.SLACK_WEBHOOK_URL;
-  const discordUrl = process.env.DISCORD_WEBHOOK_URL;
-
+export async function sendNotification(topic: string, keywords: string[], trendId: string, discordUrl?: string) {
   const messageText = `🚀 **New Trend Discovered:** ${topic}\n**Keywords:** ${keywords.join(', ')}\n**ID:** ${trendId}`;
-
-  if (slackUrl) {
-    await fetch(slackUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: messageText }),
-    });
-  }
 
   if (discordUrl) {
     // Discord Webhook with Buttons (Action Row)

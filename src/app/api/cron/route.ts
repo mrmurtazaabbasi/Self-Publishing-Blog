@@ -33,7 +33,7 @@ export async function GET(request: Request) {
     const exists = await db.prepare('SELECT 1 FROM notified_trends WHERE trend_id = ?').bind(trend.id).first();
     
     if (!exists) {
-      await sendNotification(trend.topic, trend.keywords, trend.id);
+      await sendNotification(trend.topic, trend.keywords, trend.id, env.DISCORD_WEBHOOK_URL);
       
       await db.prepare('INSERT INTO trends (id, topic, keywords) VALUES (?, ?, ?)')
         .bind(trend.id, trend.topic, trend.keywords.join(','))
