@@ -6,7 +6,7 @@ pages_build_output_dir = ".next"
 [[d1_databases]]
 binding = "DB"
 database_name = "blog_db"
-database_id = "b5e968b2-9ee6-423b-a72f-204f07ae1275"
+database_id = "8bd7c652-e7df-42af-af43-3403c93a2d9e"
 
 [vars]
 # Add Slack/Discord Webhooks here
