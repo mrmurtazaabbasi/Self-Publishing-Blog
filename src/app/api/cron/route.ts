@@ -54,8 +54,10 @@ export async function GET(request: Request) {
     success: true, 
     notified: notifiedCount,
     debug: {
-      hasDiscordUrl: !!env.DISCORD_WEBHOOK_URL,
-      trendDiscovery: trends[0].topic
+      foundKeys: Object.keys(env),
+      hasGemini: !!env.GEMINI_API_KEY,
+      hasSerper: !!env.SERPER_API_KEY,
+      hasDiscord: !!env.DISCORD_WEBHOOK_URL
     }
   });
 }
