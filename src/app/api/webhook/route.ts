@@ -44,10 +44,17 @@ export async function GET(request: Request) {
 
   if (!trendId || !command) return new Response('Missing params', { status: 400 });
 
-  const result = await handleCommand(trendId, command, env);
-  return new Response(`<h1>Blog Action Triggered</h1><p>${result}</p><a href="/">Go to Blog</a>`, {
-    headers: { 'Content-Type': 'text/html' }
-  });
+  try {
+    const result = await handleCommand(trendId, command, env);
+    return new Response(`<h1>Blog Action Triggered</h1><p>${result}</p><a href="/">Go to Blog</a>`, {
+      headers: { 'Content-Type': 'text/html' }
+    });
+  } catch (err: any) {
+    return new Response(`<h1>Internal Error</h1><p>Error: ${err.message}</p><pre>${err.stack}</pre>`, {
+      status: 500,
+      headers: { 'Content-Type': 'text/html' }
+    });
+  }
 }
 
 export async function POST(request: Request) {
